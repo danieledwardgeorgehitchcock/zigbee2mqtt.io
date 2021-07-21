@@ -37,7 +37,7 @@ const definition = {
     zigbeeModel: ['lumi.sens'], // The model ID from: Device with modelID 'lumi.sens' is not supported.
     model: 'WSDCGQ01LM', // Vendor model number, look on the device for a model number
     vendor: 'Xiaomi', // Vendor of the device (only used for documentation and startup logging)
-    description: 'MiJia temperature & humidity sensor ', // Description of the device, copy from vendor site. (only used for documentation and startup logging)
+    description: 'MiJia temperature & humidity sensor', // Description of the device, copy from vendor site. (only used for documentation and startup logging)
     fromZigbee: [], // We will add this later
     toZigbee: [], // Should be empty, unless device can be controlled (e.g. lights, switches).
     exposes: [e.battery(), e.temperature(), e.humidity()], // Defines what this device exposes, used for e.g. Home Assistant discovery and in the frontend
@@ -94,7 +94,7 @@ const definition = {
     zigbeeModel: ['lumi.sens'],
     model: 'WSDCGQ01LM',
     vendor: 'Xiaomi',
-    description: 'MiJia temperature & humidity sensor ',startup logging)
+    description: 'MiJia temperature & humidity sensor',
     fromZigbee: [fz.temperature], // <-- added here
     toZigbee: [],
     exposes: [e.battery(), e.temperature(), e.humidity()],
@@ -141,4 +141,4 @@ This step is optional and can be skipped as the device page will automatically b
 On the next release of Zigbee2MQTT, the documentation will be updated and your device file will be linked in `docs/information/supported_devices.md` automatically.
 
 ### 5. Done!
-Now it's time to submit a pull request to [zigbee-herdsman-converters](https://github.com/Koenkk/zigbee-herdsman-converters) so this device is supported out of the box by Zigbee2MQTT. This can be done by adding the definition to the [vendor file](https://github.com/Koenkk/zigbee-herdsman-converters/devices) of your device. :smiley:
+Now it's time to submit a pull request to [zigbee-herdsman-converters](https://github.com/Koenkk/zigbee-herdsman-converters) so this device is supported out of the box by Zigbee2MQTT. This can be done by adding the definition to the [vendor file](https://github.com/Koenkk/zigbee-herdsman-converters/tree/master/devices) of your device. :smiley:

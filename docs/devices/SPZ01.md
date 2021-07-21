@@ -1,19 +1,19 @@
 ---
-title: "Legrand 067775 control via MQTT"
-description: "Integrate your Legrand 067775 via Zigbee2MQTT with whatever smart home
+title: "J.XUAN SPZ01 control via MQTT"
+description: "Integrate your J.XUAN SPZ01 via Zigbee2MQTT with whatever smart home
  infrastructure you are using without the vendors bridge or gateway."
 ---
 
 *To contribute to this page, edit the following
-[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/067775.md)*
+[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/SPZ01.md)*
 
-# Legrand 067775
+# J.XUAN SPZ01
 
-| Model | 067775  |
-| Vendor  | Legrand  |
-| Description | Power socket with power consumption monitoring |
-| Exposes | switch (state), action, power, voltage, current, linkquality |
-| Picture | ![Legrand 067775](../images/devices/067775.jpg) |
+| Model | SPZ01  |
+| Vendor  | J.XUAN  |
+| Description | plug |
+| Exposes | switch (state), power, power_outage_memory, linkquality |
+| Picture | ![J.XUAN SPZ01](../images/devices/SPZ01.jpg) |
 
 ## Notes
 
@@ -27,29 +27,18 @@ The current state of this switch is in the published state under the `state` pro
 To control this switch publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"state": "ON"}`, `{"state": "OFF"}` or `{"state": "TOGGLE"}`.
 To read the current state of this switch publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"state": ""}`.
 
-### Action (enum)
-Triggered action (e.g. a button click).
-Value can be found in the published state on the `action` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The possible values are: `identify`.
-
 ### Power (numeric)
 Instantaneous measured power.
 Value can be found in the published state on the `power` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `W`.
 
-### Voltage (numeric)
-Measured electrical potential value.
-Value can be found in the published state on the `voltage` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The unit of this value is `V`.
-
-### Current (numeric)
-Instantaneous measured electrical current.
-Value can be found in the published state on the `current` property.
-It's not possible to read (`/get`) or write (`/set`) this value.
-The unit of this value is `A`.
+### Power_outage_memory (binary)
+Enable/disable the power outage memory, this recovers the on/off mode after power failure.
+Value can be found in the published state on the `power_outage_memory` property.
+It's not possible to read (`/get`) this value.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"power_outage_memory": NEW_VALUE}`.
+If value equals `true` power_outage_memory is ON, if `false` OFF.
 
 ### Linkquality (numeric)
 Link quality (signal strength).
@@ -78,32 +67,20 @@ sensor:
   - platform: "mqtt"
     state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
     availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.action }}"
-    icon: "mdi:gesture-double-tap"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
     value_template: "{{ value_json.power }}"
     unit_of_measurement: "W"
     device_class: "power"
+    state_class: "measurement"
 
-sensor:
+switch:
   - platform: "mqtt"
     state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
     availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.voltage }}"
-    unit_of_measurement: "V"
-    device_class: "voltage"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.current }}"
-    unit_of_measurement: "A"
-    device_class: "current"
+    value_template: "{% if value_json.power_outage_memory %} true {% else %} false {% endif %}"
+    payload_on: "true"
+    payload_off: "false"
+    command_topic: "zigbee2mqtt/<FRIENDLY_NAME>/set"
+    command_topic_postfix: "power_outage_memory"
 
 sensor:
   - platform: "mqtt"
@@ -111,7 +88,9 @@ sensor:
     availability_topic: "zigbee2mqtt/bridge/state"
     value_template: "{{ value_json.linkquality }}"
     unit_of_measurement: "lqi"
+    enabled_by_default: false
     icon: "mdi:signal"
+    state_class: "measurement"
 ```
 {% endraw %}
 

@@ -24,6 +24,10 @@ Switch the lamp on five times until the bulb blinks several times.
 ### Device type specific configuration
 *[How to use device type specific configuration](../information/configuration.md)*
 
+* `color_sync`: Synchronizes the color values in the state, e.g. if the state contains `color_temp` and `color.xy` and
+the `color_temp` is set, `color.xy` will be updated to match the `color_temp`. (default: `true`)
+
+
 * `transition`: Controls the transition time (in seconds) of on/off, brightness,
 color temperature (if applicable) and color (if applicable) changes. Defaults to `0` (no transition).
 Note that this value is overridden if a `transition` value is present in the MQTT command payload.
@@ -115,13 +119,15 @@ light:
       - "finish_effect"
       - "stop_effect"
 
-binary_sensor:
+switch:
   - platform: "mqtt"
     state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
     availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.power_outage_memory }}"
-    payload_on: true
-    payload_off: false
+    value_template: "{% if value_json.power_outage_memory %} true {% else %} false {% endif %}"
+    payload_on: "true"
+    payload_off: "false"
+    command_topic: "zigbee2mqtt/<FRIENDLY_NAME>/set"
+    command_topic_postfix: "power_outage_memory"
 
 sensor:
   - platform: "mqtt"
@@ -129,7 +135,9 @@ sensor:
     availability_topic: "zigbee2mqtt/bridge/state"
     value_template: "{{ value_json.linkquality }}"
     unit_of_measurement: "lqi"
+    enabled_by_default: false
     icon: "mdi:signal"
+    state_class: "measurement"
 
 sensor:
   - platform: "mqtt"
@@ -137,6 +145,7 @@ sensor:
     availability_topic: "zigbee2mqtt/bridge/state"
     icon: "mdi:update"
     value_template: "{{ value_json['update']['state'] }}"
+    enabled_by_default: false
 
 binary_sensor:
   - platform: "mqtt"
@@ -145,6 +154,7 @@ binary_sensor:
     payload_on: true
     payload_off: false
     value_template: "{{ value_json.update_available}}"
+    enabled_by_default: false
 ```
 {% endraw %}
 

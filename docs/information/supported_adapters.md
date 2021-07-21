@@ -31,16 +31,24 @@ Zigbee2MQTT officially supports the following adapters:
   </tr>
   <tr>
     <td><img src="../images/ZigStar-USB.jpg"></td>
-    <td>ZigStar CC2652P2 USB Coordinator</td>
-    <td>Open source hardware CC2652P based,USB connected adapter with external antenna</a></td>
+    <td>ZigStar Stick v4</td>
+    <td>Powerfull Open source dongle with external antenna based on CC2652P</td>
     <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a><br/> <a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/router/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_router_20210128.zip">Router</a></td>
-    <td><a href="https://mercenaruss.github.io/zigbee-stick-v4/flashing">Flashing</a></td>
-    <td><a href="https://t.me/zigberu">Zigbee DYI Market (Russian)</a></td>
+    <td><a href="https://zig-star.com/projects/zigbee-stick-v4/">Description</a><br><a href="https://zig-star.com/radio-docs/flash-cc-bsl/">Flashing</a></td>
+    <td><a href="https://t.me/zigberu">Zigbee DYI Market(Russian)</a></td>
+  </tr>
+  <tr>
+    <td><img src="../images/ZigStar-Shield.png"></td>
+    <td>ZigStar Shield</td>
+    <td>Powerfull Open source Pi Shield based on CC2652P</td>
+    <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a><br/> <a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/router/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_router_20210128.zip">Router</a></td>
+    <td><a href="https://zig-star.com/projects/zigbee-shield/">Description</a><br><a href="https://zig-star.com/radio-docs/flash-cc-bsl/">Flashing</a></td>
+    <td><a href="https://t.me/zigberu">Zigbee DYI Market(Russian)</a></td>
   </tr>
   <tr>
     <td><img src="../images/Tubes_USB_Coordinator_CC2652P2_variant.png"></td>
     <td>Tube's CC2652P2 USB Coordinator</td>
-    <td>Open source hardware CC2652P based USB connected adapter with external antenna and USB extension cable</a></td>
+    <td>Open source hardware CC2652P based USB connected adapter with external antenna and USB extension cable</td>
     <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a><br/> <a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/router/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_router_20210128.zip">Router</a></td>
     <td><a href="https://github.com/tube0013/tube_gateways">Flashing</a></td>
     <td><a href="https://www.tubeszb.com/">Tube's ZB Store</a></td>
@@ -48,10 +56,26 @@ Zigbee2MQTT officially supports the following adapters:
   <tr>
     <td><img src="../images/Tubes_Zigbee_Gateways_CC2652P2_variant.jpeg"></td>
     <td>Tube's Zigbee Gateways (CC2652P2 variant)</td>
-    <td>Open source hardware CC2652P and ESP32 based Zigbee to Ethernet Coordinator</a></td>
+    <td>Open source hardware CC2652P and ESP32 based Zigbee to Ethernet Coordinator</td>
     <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a></td>
     <td><a href="https://github.com/tube0013/tube_gateways">Flashing</a></td>
     <td><a href="https://www.tubeszb.com/">Tube's ZB Store</a></td>
+  </tr>
+  <tr>
+    <td><img src="../images/Tubes_Zigbee_PoE_Coordinator_CC2652P2_variant.jpeg"></td>
+    <td>Tube's Zigbee Tube's Zigbee PoE Serial Coordinator (CC2652P2 variant)</td>
+    <td>Open source hardware CC2652P and ESP32 based Zigbee to Ethernet Coordinator powered via PoE (Power Over Ethernet)</td>
+    <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a></td>
+    <td><a href="https://github.com/tube0013/tube_gateways">Flashing</a></td>
+    <td><a href="https://www.tubeszb.com/">Tube's ZB Store</a></td>
+  </tr>
+  <tr>
+    <td><img src="../images/circset_cc2652.jpg"></td>
+    <td>CircuitSetup's CC2652P2 USB Coordinator</td>
+    <td>CC2652P based USB connected adapter pre-programmed with Z-Stack</td>
+    <td><a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/coordinator/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_coordinator_20210120.zip">Coordinator</a><br/> <a href="https://github.com/Koenkk/Z-Stack-firmware/raw/master/router/Z-Stack_3.x.0/bin/CC1352P2_CC2652P_launchpad_router_20210128.zip">Router</a></td>
+    <td><a href="https://circuitsetup.us/product/usb-zigbee-stick-z-stack-coordinator/">Flashing</a></td>
+    <td><a href="https://circuitsetup.us/product/usb-zigbee-stick-z-stack-coordinator/">CircuitSetup's Store</a></td>
   </tr>
   <tr>
     <td><img src="../images/cc2531.jpg"></td>
@@ -156,7 +180,7 @@ Zigbee2MQTT officially supports the following adapters:
   <tr>
     <td><img src="../images/Silicon_Labs_Gecko_EFR32_SoCs.webp"></td>
     <td>Silicon Labs EZSP v8 <b>(experimental)</b></td>
-    <td>Initial development started on experimental (pre-alpha stage) support for various adapters based on Silicon Labs EFR32 SoC families with EmberZNet NCP 6.7.8 firmware or later via EZSP version 8 (EmberZNet Serial Protocol) interface. This include all hardware based on SoCs/Modules from Silabs EFR32MG21/MGM210 and EFR32MG12/MGM12 series.</td>
+    <td>Initial development started on experimental (pre-alpha stage) support for various adapters based on Silicon Labs EM35X and EFR32MG SoC families with EmberZNet NCP 6.7.8 firmware or later via EZSP version 8 (EmberZNet Serial Protocol) interface. This include all hardware based on SoCs/Modules from Silabs EFR32MG21/MGM210 and EFR32MG12/MGM12 series.</td>
     <td><a href="https://github.com/Koenkk/zigbee-herdsman/issues/319">Coordinator</a><br/></td>
     <td></td>
     <td></td>
