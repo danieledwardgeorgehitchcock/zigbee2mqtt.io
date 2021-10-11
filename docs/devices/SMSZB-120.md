@@ -12,20 +12,39 @@ description: "Integrate your Develco SMSZB-120 via Zigbee2MQTT with whatever sma
 | Model | SMSZB-120  |
 | Vendor  | Develco  |
 | Description | Smoke detector with siren |
-| Exposes | temperature, battery, smoke, battery_low, test, max_duration, alarm, linkquality |
+| Exposes | temperature, battery, smoke, battery_low, test, max_duration, alarm, reliability, fault, linkquality |
 | Picture | ![Develco SMSZB-120](../images/devices/SMSZB-120.jpg) |
 
 ## Notes
 
 
-### Triggering alarm
+### Warning usage
+Warning only support a single mode, `burglar`
+
+Duration of using `warning` can be shorter than `max_duration` but not longer. If `max_duration` are set to 60 seconds, and you try to set `warning` with `duration` of 90 seconds, the warning will only apply for 60 seconds. Default value of `max_duration` are 240 seconds
+
+This device do not support the `strobe` and `strobe_duty_cycle` functionality
+
+
+### Triggering alarm (using old style `warning`)
 This smoke alarm can be triggered manually by publishing to `zigbee2mqtt/FRIENDLY_NAME/set` with the payloads:
 
-To start (Change `duration` in number of seconds to what you need):
-* `{"warning": {"mode": "burglar", "level": "high", "strobe": false, "duration": 300}}`
+To start :
+* `{"warning":{"duration":60,"level":"low","mode":"burglar","strobe":false,"strobe_duty_cycle":0}}`
+Where:
+- `duration`: the number of seconds the alarm will be on
+- `level`: `low`, `medium`, `high`, `very_high`
+- `mode`: `stop`, `burglar`
+- `strobe`: not supported
+- `strobe_duty_cycle`: not supported
 
 To stop:
-* `{"warning": {"mode": "stop", "level": "low", "strobe": false, "duration": 300}}`
+* `{"warning":{"duration":60,"level":"low","mode":"stop","strobe":false,"strobe_duty_cycle":0}}`
+
+### Triggering alarm, Simple
+Can be set by publishing to `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"alarm": "START"}` and `{"alarm": "OFF"}`
+Set `max_duration` from the Zigbee2MQTT UI or by publishing `{"max_duration": NEW_VALUE}`
+This alarm are preset to highest volume
 
 ### Device type specific configuration
 *[How to use device type specific configuration](../information/configuration.md)*
@@ -90,108 +109,22 @@ It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"alarm": NEW_VALUE}`.
 If value equals `START` alarm is ON, if `OFF` OFF.
 
+### Reliability (enum)
+Indicates reason if any fault.
+Value can be found in the published state on the `reliability` property.
+It's not possible to read (`/get`) or write (`/set`) this value.
+The possible values are: `no_fault_detected`, `unreliable_other`, `process_error`.
+
+### Fault (binary)
+Indicates whether the device are in fault state.
+Value can be found in the published state on the `fault` property.
+It's not possible to read (`/get`) or write (`/set`) this value.
+If value equals `true` fault is ON, if `false` OFF.
+
 ### Linkquality (numeric)
 Link quality (signal strength).
 Value can be found in the published state on the `linkquality` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The minimal value is `0` and the maximum value is `255`.
 The unit of this value is `lqi`.
-
-## Manual Home Assistant configuration
-Although Home Assistant integration through [MQTT discovery](../integration/home_assistant) is preferred,
-manual integration is possible with the following configuration:
-
-
-{% raw %}
-```yaml
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.temperature }}"
-    unit_of_measurement: "°C"
-    device_class: "temperature"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.battery }}"
-    unit_of_measurement: "%"
-    device_class: "battery"
-    state_class: "measurement"
-
-binary_sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.smoke }}"
-    payload_on: true
-    payload_off: false
-    device_class: "smoke"
-
-binary_sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.battery_low }}"
-    payload_on: true
-    payload_off: false
-    device_class: "battery"
-
-binary_sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.test }}"
-    payload_on: true
-    payload_off: false
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.max_duration }}"
-    unit_of_measurement: "s"
-
-switch:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.alarm }}"
-    payload_on: "START"
-    payload_off: "OFF"
-    command_topic: "zigbee2mqtt/<FRIENDLY_NAME>/set"
-    command_topic_postfix: "alarm"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.linkquality }}"
-    unit_of_measurement: "lqi"
-    enabled_by_default: false
-    icon: "mdi:signal"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    icon: "mdi:update"
-    value_template: "{{ value_json['update']['state'] }}"
-    enabled_by_default: false
-
-binary_sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    payload_on: true
-    payload_off: false
-    value_template: "{{ value_json.update_available}}"
-    enabled_by_default: false
-```
-{% endraw %}
-
 

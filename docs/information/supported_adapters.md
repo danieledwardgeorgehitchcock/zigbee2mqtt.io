@@ -212,7 +212,7 @@ Zigbee2MQTT officially supports the following adapters:
   <tr>
     <td><img src="../images/conbee.jpg"></td>
     <td>ConBee II <b>(experimental)</b></td>
-    <td>USB connected adapter</td>
+    <td>USB connected adapter. See notes below for required entry in <kbd>configuration.yaml</kbd></td>
     <td><a href="https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Update-deCONZ-manually">Coordinator</a><br/></td>
     <td><a href="https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Update-deCONZ-manually">Flashing</a></td>
     <td><a href="https://phoscon.de/en/conbee2?buy=1#buy">Phoscon</a></td>
@@ -240,7 +240,8 @@ Zigbee2MQTT officially supports the following adapters:
 Before buying an adapter, please read the notes below!
 
 - Recommended adapters are the ones with a **CC2652R**, **CC2652P**, **CC2652RB** or **CC1352P** chip (e.g. the **Electrolama zig-a-zig-ah! (zzh!)**). They are very powerful, have good range, are well tested with Zigbee2MQTT and can be flashed without additional hardware.
-- The following adapters require additional hardware to flash: adapters based on the **CC2530** and **CC2531** require a CC debugger and downloader cable, adapters based on the **CC2538** require a JTAG flasher.
+- **CC2538** adapters are powerful, good range with **CC2592** PA and can be flashed via USB without any additional hardware
+- The following adapters require additional hardware to flash: adapters based on the **CC2530** and **CC2531** require a CC debugger and downloader cable
 - The adapters based on the CC2652R, CC2652RB, CC2652P and CC1352P chips are very similar to each other since (almost) the same chip is used. The differences:
   - The CC2652P and and CC1352P have a power amplifier which support up-to 20dBm output vs 5dBm on CC2652R(B).
   - The CC1352P support the sub-1 GHz frequency (which is not relevant for Zigbee since it uses 2.4 GHz), the CC2652* only supports 2.4 GHz

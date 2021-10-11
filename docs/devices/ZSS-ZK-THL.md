@@ -17,6 +17,18 @@ description: "Integrate your Moes ZSS-ZK-THL via Zigbee2MQTT with whatever smart
 
 ## Notes
 
+### Pairing
+Press the Orange button on the side until 3 dots appear on the screen.
+
+### Compatibility issue
+
+This device freeze after a while when not connected with a Tuya Hub. See [#7535](https://github.com/Koenkk/zigbee2mqtt/issues/7535). Some users report that
+this device work fine when connected to any hub through a relay device.
+
+### Usage limitation
+
+The device reports illuminance variations instantly. Therefore temperature is reported each hour making this device useless for building a thermostat.
+
 ### Device type specific configuration
 *[How to use device type specific configuration](../information/configuration.md)*
 
@@ -81,69 +93,4 @@ Value can be found in the published state on the `linkquality` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The minimal value is `0` and the maximum value is `255`.
 The unit of this value is `lqi`.
-
-## Manual Home Assistant configuration
-Although Home Assistant integration through [MQTT discovery](../integration/home_assistant) is preferred,
-manual integration is possible with the following configuration:
-
-
-{% raw %}
-```yaml
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.battery }}"
-    unit_of_measurement: "%"
-    device_class: "battery"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.illuminance }}"
-    device_class: "illuminance"
-    enabled_by_default: false
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.illuminance_lux }}"
-    unit_of_measurement: "lx"
-    device_class: "illuminance"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.humidity }}"
-    unit_of_measurement: "%"
-    device_class: "humidity"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.temperature }}"
-    unit_of_measurement: "°C"
-    device_class: "temperature"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.linkquality }}"
-    unit_of_measurement: "lqi"
-    enabled_by_default: false
-    icon: "mdi:signal"
-    state_class: "measurement"
-```
-{% endraw %}
-
 

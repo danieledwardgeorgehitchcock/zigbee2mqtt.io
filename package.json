@@ -30,8 +30,7 @@
   "homepage": "https://www.zigbee2mqtt.io",
   "dependencies": {
     "image-size": "*",
-    "json2yaml": "*",
-    "zigbee2mqtt": "https://github.com/koenkk/zigbee2mqtt#1.21.0"
+    "zigbee-herdsman-converters": "14.0.261"
   },
   "devDependencies": {
     "chai": "*",

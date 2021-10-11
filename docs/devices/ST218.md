@@ -33,12 +33,12 @@ To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME
 It's not possible to write (`/set`) this value.
 The unit of this value is `°C`.
 
-### Keypad_lockout (binary)
+### Keypad_lockout (enum)
 Enables/disables physical input on the device.
 Value can be found in the published state on the `keypad_lockout` property.
 To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"keypad_lockout": ""}`.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"keypad_lockout": NEW_VALUE}`.
-If value equals `lock1` keypad_lockout is ON, if `unlock` OFF.
+The possible values are: `unlock`, `lock1`, `lock2`.
 
 ### Climate 
 This climate device supports the following features: `occupied_heating_setpoint`, `local_temperature`, `system_mode`, `running_state`.
@@ -53,65 +53,4 @@ Value can be found in the published state on the `linkquality` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The minimal value is `0` and the maximum value is `255`.
 The unit of this value is `lqi`.
-
-## Manual Home Assistant configuration
-Although Home Assistant integration through [MQTT discovery](../integration/home_assistant) is preferred,
-manual integration is possible with the following configuration:
-
-
-{% raw %}
-```yaml
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.local_temperature }}"
-    unit_of_measurement: "°C"
-    device_class: "temperature"
-    state_class: "measurement"
-
-switch:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.keypad_lockout }}"
-    payload_on: "lock1"
-    payload_off: "unlock"
-    command_topic: "zigbee2mqtt/<FRIENDLY_NAME>/set"
-    command_topic_postfix: "keypad_lockout"
-
-climate:
-  - platform: "mqtt"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    temperature_unit: "C"
-    temp_step: 0.5
-    min_temp: "5"
-    max_temp: "30"
-    current_temperature_topic: true
-    current_temperature_template: "{{ value_json.local_temperature }}"
-    mode_state_topic: true
-    mode_state_template: "{{ value_json.system_mode }}"
-    modes: 
-      - "off"
-      - "auto"
-      - "heat"
-    mode_command_topic: true
-    action_topic: true
-    action_template: "{% set values = {'idle':'off','heat':'heating','cool':'cooling','fan only':'fan'} %}{{ values[value_json.running_state] }}"
-    temperature_command_topic: "occupied_heating_setpoint"
-    temperature_state_template: "{{ value_json.occupied_heating_setpoint }}"
-    temperature_state_topic: true
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.linkquality }}"
-    unit_of_measurement: "lqi"
-    enabled_by_default: false
-    icon: "mdi:signal"
-    state_class: "measurement"
-```
-{% endraw %}
-
 

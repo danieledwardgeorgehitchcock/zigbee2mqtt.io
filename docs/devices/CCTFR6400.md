@@ -38,12 +38,12 @@ when humidity >= 80 precision will be 0, when humidity >= 10 precision will be 1
 
 ## Exposes
 
-### Keypad_lockout (binary)
+### Keypad_lockout (enum)
 Enables/disables physical input on the device.
 Value can be found in the published state on the `keypad_lockout` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"keypad_lockout": NEW_VALUE}`.
-If value equals `lock1` keypad_lockout is ON, if `unlock` OFF.
+The possible values are: `unlock`, `lock1`, `lock2`.
 
 ### Humidity (numeric)
 Measured relative humidity.
@@ -81,83 +81,4 @@ Value can be found in the published state on the `linkquality` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The minimal value is `0` and the maximum value is `255`.
 The unit of this value is `lqi`.
-
-## Manual Home Assistant configuration
-Although Home Assistant integration through [MQTT discovery](../integration/home_assistant) is preferred,
-manual integration is possible with the following configuration:
-
-
-{% raw %}
-```yaml
-switch:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.keypad_lockout }}"
-    payload_on: "lock1"
-    payload_off: "unlock"
-    command_topic: "zigbee2mqtt/<FRIENDLY_NAME>/set"
-    command_topic_postfix: "keypad_lockout"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.humidity }}"
-    unit_of_measurement: "%"
-    device_class: "humidity"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.battery }}"
-    unit_of_measurement: "%"
-    device_class: "battery"
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.voltage }}"
-    unit_of_measurement: "mV"
-    device_class: "voltage"
-    enabled_by_default: false
-    state_class: "measurement"
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.action }}"
-    enabled_by_default: true
-    icon: "mdi:gesture-double-tap"
-
-climate:
-  - platform: "mqtt"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    temperature_unit: "C"
-    temp_step: 0.5
-    min_temp: "4"
-    max_temp: "30"
-    current_temperature_topic: true
-    current_temperature_template: "{{ value_json.local_temperature }}"
-    temperature_command_topic: "occupied_heating_setpoint"
-    temperature_state_template: "{{ value_json.occupied_heating_setpoint }}"
-    temperature_state_topic: true
-
-sensor:
-  - platform: "mqtt"
-    state_topic: "zigbee2mqtt/<FRIENDLY_NAME>"
-    availability_topic: "zigbee2mqtt/bridge/state"
-    value_template: "{{ value_json.linkquality }}"
-    unit_of_measurement: "lqi"
-    enabled_by_default: false
-    icon: "mdi:signal"
-    state_class: "measurement"
-```
-{% endraw %}
-
 
