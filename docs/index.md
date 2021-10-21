@@ -41,11 +41,13 @@ Besides running Zigbee2MQTT on [bare-metal Linux](getting_started/running_zigbee
 ### How tos
 * [How to create a CC2530 router](how_tos/how_to_create_a_cc2530_router.md)
 * [How to connect to a remote adapter](how_tos/how_to_connect_to_a_remote_adapter.md)
+* [How to connect to a remote Sonoff ZBBridge](how_tos/how_to_connect_to_a_remote_sonoff_zbbridge.md)
 * [How to improve network range](how_tos/how_to_improve_network_range_and_stability.md)
 * [How to secure your Zigbee network](how_tos/how_to_secure_network.md)
 * [How to sniff Zigbee traffic](how_tos/how_to_sniff_zigbee_traffic.md)
 * [How to support new devices](how_tos/how_to_support_new_devices.md)
 * [How to support new Tuya compatible devices](how_tos/how_to_support_new_tuya_devices.md)
+* [How to find Tuya data points](how_tos/how_to_find_tuya_data_points.md)
 * [How to switch to the dev branch](how_tos/how-to-switch-to-dev-branch.md)
 * [How to develop in the Home Assistant addon](https://github.com/zigbee2mqtt/hassio-zigbee2mqtt/blob/master/CONTRIBUTING.md)
 * [How to create your own (DIY) Zigbee devices](https://diyruz.github.io/)
