@@ -1,23 +1,41 @@
 ---
 title: "SmartThings F-APP-UK-V2 control via MQTT"
-description: "Integrate your SmartThings F-APP-UK-V2 via Zigbee2MQTT with whatever smart home
- infrastructure you are using without the vendors bridge or gateway."
+description: "Integrate your SmartThings F-APP-UK-V2 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+addedAt: 2019-12-15T17:27:48Z
+pageClass: device-page
 ---
 
-*To contribute to this page, edit the following
-[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/F-APP-UK-V2.md)*
+<!-- !!!! -->
+<!-- ATTENTION: This file is auto-generated through docgen! -->
+<!-- You can only edit the "Notes"-Section between the two comment lines "Notes BEGIN" and "Notes END". -->
+<!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
+<!-- !!!! -->
 
 # SmartThings F-APP-UK-V2
 
+|     |     |
+|-----|-----|
 | Model | F-APP-UK-V2  |
 | Vendor  | SmartThings  |
 | Description | Zigbee Outlet UK with power meter |
 | Exposes | switch (state), power, current, voltage, linkquality |
-| Picture | ![SmartThings F-APP-UK-V2](../images/devices/F-APP-UK-V2.jpg) |
+| Picture | ![SmartThings F-APP-UK-V2](https://www.zigbee2mqtt.io/images/devices/F-APP-UK-V2.jpg) |
 
-## Notes
 
-None
+<!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+## Pairing
+In order to pair the device to your zigbee coordinator, first press the "Permit Join" button in the Zigbee2MQTT screen. While the device is unplugged, press and hold one of the buttons on the side. While holding the button, plug the device in. Once plugged into the power socket, release the button. The blue LED will flash briefly and the device will begin pairing.
+<!-- Notes END: Do not edit below this line -->
+
+
+## Options
+*[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
+
+* `power_calibration`: Calibrates the power value (percentual offset), takes into effect on next report of device. The value must be a number.
+
+* `current_calibration`: Calibrates the current value (percentual offset), takes into effect on next report of device. The value must be a number.
+
+* `voltage_calibration`: Calibrates the voltage value (percentual offset), takes into effect on next report of device. The value must be a number.
 
 
 ## Exposes

@@ -1,23 +1,34 @@
 ---
 title: "TuYa TS0601_cover control via MQTT"
-description: "Integrate your TuYa TS0601_cover via Zigbee2MQTT with whatever smart home
- infrastructure you are using without the vendors bridge or gateway."
+description: "Integrate your TuYa TS0601_cover via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+addedAt: 2021-10-30T12:58:50
+pageClass: device-page
 ---
 
-*To contribute to this page, edit the following
-[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/TS0601_cover.md)*
+<!-- !!!! -->
+<!-- ATTENTION: This file is auto-generated through docgen! -->
+<!-- You can only edit the "Notes"-Section between the two comment lines "Notes BEGIN" and "Notes END". -->
+<!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
+<!-- !!!! -->
 
 # TuYa TS0601_cover
 
+|     |     |
+|-----|-----|
 | Model | TS0601_cover  |
 | Vendor  | TuYa  |
 | Description | Curtain motor/roller blind motor/window pusher/tubular motor |
 | Exposes | cover (state, position), options, linkquality |
-| Picture | ![TuYa TS0601_cover](../images/devices/TS0601_cover.jpg) |
-| White-label | Yushun YS-MT750, Zemismart ZM79E-DT, Binthen BCM100D, Binthen CV01A, Zemismart M515EGB, Tuya M515EGZT, TuYa DT82LEMA-1.2N, Moes AM43-0.45/40-ES-EB, Larkkey ZSTY-SM-1SRZG-EU, Zemismart ZM25TQ, Zemismart AM43, Zemismart M2805EGBZTN, Zemismart BCM500DS-TYZ, A-OK AM25 |
+| Picture | ![TuYa TS0601_cover](https://www.zigbee2mqtt.io/images/devices/TS0601_cover.jpg) |
+| White-label | Yushun YS-MT750, Zemismart ZM79E-DT, Binthen BCM100D, Binthen CV01A, Zemismart M515EGB, TuYa M515EGZT, TuYa DT82LEMA-1.2N, TuYa ZD82TN, Moes AM43-0.45/40-ES-EB, Larkkey ZSTY-SM-1SRZG-EU, Zemismart ZM85EL-2Z, Zemismart AM43, Zemismart M2805EGBZTN, Zemismart BCM500DS-TYZ, A-OK AM25, Alutech AM/R-Sm |
 
+
+<!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
 ## Notes
 
+## Pairing
+On 2-button units; press down and set simultaneously until LED flashes blue.
+On 1-button units; press the set key 3 times in 5 seconds until the LED flashes blue.
 
 ### Configuration of device attributes
 By publishing to `zigbee2mqtt/FRIENDLY_NAME/set` various device attributes can be configured:
@@ -30,12 +41,13 @@ By publishing to `zigbee2mqtt/FRIENDLY_NAME/set` various device attributes can b
 ```
 
 - **reverse_direction**: (`true`/`false`, default: `false`). Device can be configured to act in an opposite direction.
+<!-- Notes END: Do not edit below this line -->
 
-### Device type specific configuration
-*[How to use device type specific configuration](../information/configuration.md)*
 
-* `invert_cover`: By default the position/tilt values mean: open = 100, closed = 0. This can be inverted by setting this option to true (so open = 0, close = 100).
+## Options
+*[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
 
+* `invert_cover`: Inverts the cover position, false: open=100,close=0, true: open=0,close=100 (default false). The value must be `true` or `false`
 
 
 ## Exposes

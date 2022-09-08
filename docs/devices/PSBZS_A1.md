@@ -1,23 +1,32 @@
 ---
 title: "Lidl PSBZS A1 control via MQTT"
-description: "Integrate your Lidl PSBZS A1 via Zigbee2MQTT with whatever smart home
- infrastructure you are using without the vendors bridge or gateway."
+description: "Integrate your Lidl PSBZS A1 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+addedAt: 2021-07-01T18:17:29Z
+pageClass: device-page
 ---
 
-*To contribute to this page, edit the following
-[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/PSBZS_A1.md)*
+<!-- !!!! -->
+<!-- ATTENTION: This file is auto-generated through docgen! -->
+<!-- You can only edit the "Notes"-Section between the two comment lines "Notes BEGIN" and "Notes END". -->
+<!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
+<!-- !!!! -->
 
 # Lidl PSBZS A1
 
+|     |     |
+|-----|-----|
 | Model | PSBZS A1  |
 | Vendor  | Lidl  |
 | Description | Parkside smart watering timer |
 | Exposes | switch (state), timer, linkquality |
-| Picture | ![Lidl PSBZS A1](../images/devices/PSBZS-A1.jpg) |
+| Picture | ![Lidl PSBZS A1](https://www.zigbee2mqtt.io/images/devices/PSBZS-A1.jpg) |
 
-## Notes
 
-None
+<!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+
+
+<!-- Notes END: Do not edit below this line -->
+
 
 
 ## Exposes
@@ -32,6 +41,7 @@ Auto off after specific time..
 Value will **not** be published in the state.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"timer": NEW_VALUE}`.
+The minimal value is `1` and the maximum value is `10000`.
 The unit of this value is `min`.
 
 ### Linkquality (numeric)

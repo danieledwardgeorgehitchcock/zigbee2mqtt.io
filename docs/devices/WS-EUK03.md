@@ -1,32 +1,37 @@
 ---
 title: "Xiaomi WS-EUK03 control via MQTT"
-description: "Integrate your Xiaomi WS-EUK03 via Zigbee2MQTT with whatever smart home
- infrastructure you are using without the vendors bridge or gateway."
+description: "Integrate your Xiaomi WS-EUK03 via Zigbee2MQTT with whatever smart home infrastructure you are using without the vendor's bridge or gateway."
+addedAt: 2021-09-01T18:11:17Z
+pageClass: device-page
 ---
 
-*To contribute to this page, edit the following
-[file](https://github.com/Koenkk/zigbee2mqtt.io/blob/master/docs/devices/WS-EUK03.md)*
+<!-- !!!! -->
+<!-- ATTENTION: This file is auto-generated through docgen! -->
+<!-- You can only edit the "Notes"-Section between the two comment lines "Notes BEGIN" and "Notes END". -->
+<!-- Do not use h1 or h2 heading within "## Notes"-Section. -->
+<!-- !!!! -->
 
 # Xiaomi WS-EUK03
 
+|     |     |
+|-----|-----|
 | Model | WS-EUK03  |
 | Vendor  | Xiaomi  |
 | Description | Aqara smart wall switch H1 EU (with neutral, single rocker) |
-| Exposes | switch (state), action, power, energy, power_outage_memory, temperature, operation_mode, linkquality |
-| Picture | ![Xiaomi WS-EUK03](../images/devices/WS-EUK03.jpg) |
+| Exposes | switch (state), action, power, energy, flip_indicator_light, power_outage_memory, device_temperature, led_disabled_night, power_outage_count, operation_mode, linkquality |
+| Picture | ![Xiaomi WS-EUK03](https://www.zigbee2mqtt.io/images/devices/WS-EUK03.jpg) |
 
-## Notes
 
-### Device type specific configuration
-*[How to use device type specific configuration](../information/configuration.md)*
+<!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
 
-* `temperature_precision`: Controls the precision of `temperature` values,
-e.g. `0`, `1` or `2`; default `2`.
-To control the precision based on the temperature value set it to e.g. `{30: 0, 10: 1}`,
-when temperature >= 30 precision will be 0, when temperature >= 10 precision will be 1. Precision will take into affect with next report of device.
-* `temperature_calibration`: Allows to manually calibrate temperature values,
-e.g. `1` would add 1 degree to the temperature reported by the device; default `0`. Calibration will take into affect with next report of device.
 
+<!-- Notes END: Do not edit below this line -->
+
+
+## Options
+*[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
+
+* `device_temperature_calibration`: Calibrates the device_temperature value (absolute offset), takes into effect on next report of device. The value must be a number.
 
 
 ## Exposes
@@ -55,6 +60,13 @@ Value can be found in the published state on the `energy` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `kWh`.
 
+### Flip_indicator_light (binary)
+After turn on, the indicator light turns on while switch is off, and vice versa.
+Value can be found in the published state on the `flip_indicator_light` property.
+To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"flip_indicator_light": ""}`.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"flip_indicator_light": NEW_VALUE}`.
+If value equals `ON` flip_indicator_light is ON, if `OFF` OFF.
+
 ### Power_outage_memory (binary)
 Enable/disable the power outage memory, this recovers the on/off mode after power failure.
 Value can be found in the published state on the `power_outage_memory` property.
@@ -62,11 +74,23 @@ To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"power_outage_memory": NEW_VALUE}`.
 If value equals `true` power_outage_memory is ON, if `false` OFF.
 
-### Temperature (numeric)
-Measured temperature value.
-Value can be found in the published state on the `temperature` property.
+### Device_temperature (numeric)
+Temperature of the device.
+Value can be found in the published state on the `device_temperature` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
 The unit of this value is `°C`.
+
+### Led_disabled_night (binary)
+Enable/disable the LED at night.
+Value can be found in the published state on the `led_disabled_night` property.
+To read (`/get`) the value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/get` with payload `{"led_disabled_night": ""}`.
+To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"led_disabled_night": NEW_VALUE}`.
+If value equals `true` led_disabled_night is ON, if `false` OFF.
+
+### Power_outage_count (numeric)
+Number of power outages (since last pairing).
+Value can be found in the published state on the `power_outage_count` property.
+It's not possible to read (`/get`) or write (`/set`) this value.
 
 ### Operation_mode (enum)
 Decoupled mode.
