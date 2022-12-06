@@ -16,15 +16,17 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | KCTW1Z  |
-| Vendor  | TuYa  |
+| Vendor  | [TuYa](/supported-devices/#v=TuYa)  |
 | Description | Temperature & humidity sensor with LCD |
 | Exposes | temperature, humidity, battery, voltage, temperature_unit, linkquality |
 | Picture | ![TuYa KCTW1Z](https://www.zigbee2mqtt.io/images/devices/KCTW1Z.jpg) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+## Notes
 
-
+## Pairing
+Press the button on top of the device for at least 5 seconds but not more than 10 seconds (which will cancel the network configuration). The signal strength icon will begin to flash an keep on doing so until it stays solid (network config successful) or disappears (networkconfig failed).
 <!-- Notes END: Do not edit below this line -->
 
 

@@ -16,7 +16,7 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | ZNJLBL01LM  |
-| Vendor  | Xiaomi  |
+| Vendor  | [Xiaomi](/supported-devices/#v=Xiaomi)  |
 | Description | Aqara roller shade companion E1 |
 | Exposes | cover (state, position), battery, device_temperature, charging_status, motor_state, running, linkquality |
 | Picture | ![Xiaomi ZNJLBL01LM](https://www.zigbee2mqtt.io/images/devices/ZNJLBL01LM.jpg) |
@@ -25,6 +25,23 @@ pageClass: device-page
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
 ## Notes
+
+### Pairing
+Hold the reset button, on the bottom of the device, for 5 seconds.
+
+_Pairing the device with a new bridge will **not** reset the fully open/closed position._
+
+### Fully open and fully closed positions
+The rotation range (fully open and fully closed) can be reset by holding the both the up and down buttons for 3 seconds until the light turns blue.
+
+#### Fully open position
+The fully open position can be set by setting the shade to the desired position and then pressing the up button 5 times in succession. If successful the light turns blue and flashes 3 times.
+
+#### Fully closed position
+The fully closed position can be set by setting the shade to the desired position and then pressing the down button 5 times in succession. If successful the light turns blue and flashes 3 times.
+
+### Change button directions
+If the up and down buttons are working in the oppsite direction of how your blinds opreate, they can be swapped by pressing the reset button 3 times. If successful the light turns solid blue for 1 second.
 
 ### Adapter firmware
 In order for this device to work (fully), at least the following firmware is required on your adapter:

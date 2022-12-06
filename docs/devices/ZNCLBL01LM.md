@@ -16,7 +16,7 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | ZNCLBL01LM  |
-| Vendor  | Xiaomi  |
+| Vendor  | [Xiaomi](/supported-devices/#v=Xiaomi)  |
 | Description | Aqara curtain driver E1 |
 | Exposes | cover (state, position), battery, voltage, device_temperature, action, motor_state, running, hooks_state, target_position, power_source, charging, linkquality |
 | Picture | ![Xiaomi ZNCLBL01LM](https://www.zigbee2mqtt.io/images/devices/ZNCLBL01LM.jpg) |
@@ -93,7 +93,7 @@ The possible values are: `manual_open`, `manual_close`.
 Motor state.
 Value can be found in the published state on the `motor_state` property.
 It's not possible to read (`/get`) or write (`/set`) this value.
-The possible values are: `stopped`, `opening`, `closing`.
+The possible values are: `stopped`, `opening`, `closing`, `pause`.
 
 ### Running (binary)
 Whether the motor is moving or not.

@@ -16,7 +16,7 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | JT-BZ-01AQ/A  |
-| Vendor  | Xiaomi  |
+| Vendor  | [Xiaomi](/supported-devices/#v=Xiaomi)  |
 | Description | Aqara smart natural gas detector |
 | Exposes | gas, gas_density, gas_sensitivity, selftest, test, buzzer, buzzer_manual_alarm, buzzer_manual_mute, linkage_alarm, linkage_alarm_state, state, power_outage_count, linkquality |
 | Picture | ![Xiaomi JT-BZ-01AQ/A](https://www.zigbee2mqtt.io/images/devices/JT-BZ-01AQ-A.jpg) |
@@ -74,7 +74,7 @@ Starts the self-test process (checking the indicator light and buzzer work prope
 Value will **not** be published in the state.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"selftest": NEW_VALUE}`.
-The possible values are: ``.
+The possible values are: `selftest`.
 
 ### Test (binary)
 Self-test in progress.

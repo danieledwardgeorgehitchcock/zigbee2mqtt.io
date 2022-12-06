@@ -6,6 +6,11 @@ sidebarDepth: 0
 
 [[toc]]
 
+## Unstable networks
+If you experience timeouts, crashes, unable to add new devices or poor performance this mostly caused by:
+- Using a [non-recommended adapter](../adapters/README.md)
+- [Wifi or Bluetooth interference](../../advanced/zigbee/02_improve_network_range_and_stability.md#reduce-wifi-interference-by-changing-the-zigbee-channel)
+- Poor host hardware (e.g. running too much in the single computer, Raspberry Pi model 3 running Home Assistant addon, too little memory)
 
 ## Why does my device not or fail to pair?
 This problem can be divided in 2 categories; no logging is shown at all OR interview fails.
@@ -36,7 +41,7 @@ This problem can be divided in 2 categories; no logging is shown at all OR inter
 Want to migrate from e.g. a CC2531 to a more powerful adapter (e.g. ZZH)? Then follow these instructions:
 1. First make sure you are running the latest version of Zigbee2MQTT
 1. Stop Zigbee2MQTT
-1. Determine wether migrating [requires re-pairing of your devices](#what-does-and-does-not-require-repairing-of-all-devices)
+1. Determine whether migrating [requires re-pairing of your devices](#what-does-and-does-not-require-repairing-of-all-devices)
     - If re-pairing is required: remove `data/coordinator_backup.json` (if it exists) and `data/database.db`
     - If re-pairing is **not** required: [copy the ieee address of the old adpter into the new one](../adapters/flashing/copy_ieeaddr.html)
 1. Update the `serial` -> `port`  in your `configuration.yaml`

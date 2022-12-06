@@ -16,15 +16,19 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | FUT035Z  |
-| Vendor  | Miboxer  |
+| Vendor  | [Miboxer](/supported-devices/#v=Miboxer)  |
 | Description | Dual white LED controller |
 | Exposes | light (state, brightness, color_temp), effect, linkquality |
 | Picture | ![Miboxer FUT035Z](https://www.zigbee2mqtt.io/images/devices/FUT035Z.jpg) |
 
 
 <!-- Notes BEGIN: You can edit here. Add "## Notes" headline if not already present. -->
+## Notes
 
+### Pairing
+The device will enter pairing mode when turned on, if it has not been paired previously. Pairing mode can be forced by pressing the SET button 3 times in succession.
 
+The lights connected to the controller will fade in and out when the controlled is in pairing mode.
 <!-- Notes END: Do not edit below this line -->
 
 

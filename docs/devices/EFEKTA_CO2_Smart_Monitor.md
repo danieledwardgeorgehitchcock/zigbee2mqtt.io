@@ -16,7 +16,7 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | EFEKTA_CO2_Smart_Monitor  |
-| Vendor  | Custom devices (DiY)  |
+| Vendor  | [Custom devices (DiY)](/supported-devices/#v=Custom%20devices%20(DiY))  |
 | Description | [EFEKTA CO2 Smart Monitor, ws2812b indicator, can control the relay, binding](https://efektalab.com/CO2_Monitor) |
 | Exposes | co2, temperature, humidity, light_indicator, light_indicator_level, set_altitude, temperature_offset, humidity_offset, forced_recalibration, manual_forced_recalibration, factory_reset_co2, enable_gas, high_gas, low_gas, enable_temperature, high_temperature, low_temperature, enable_humidity, high_humidity, low_humidity, linkquality |
 | Picture | ![Custom devices (DiY) EFEKTA_CO2_Smart_Monitor](https://www.zigbee2mqtt.io/images/devices/EFEKTA_CO2_Smart_Monitor.jpg) |
@@ -133,7 +133,7 @@ Setting High CO2 Gas Border.
 Value can be found in the published state on the `high_gas` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"high_gas": NEW_VALUE}`.
-The minimal value is `0` and the maximum value is `99`.
+The minimal value is `400` and the maximum value is `2000`.
 The unit of this value is `ppm`.
 
 ### Low_gas (numeric)
@@ -141,7 +141,7 @@ Setting Low CO2 Gas Border.
 Value can be found in the published state on the `low_gas` property.
 It's not possible to read (`/get`) this value.
 To write (`/set`) a value publish a message to topic `zigbee2mqtt/FRIENDLY_NAME/set` with payload `{"low_gas": NEW_VALUE}`.
-The minimal value is `0` and the maximum value is `99`.
+The minimal value is `400` and the maximum value is `2000`.
 The unit of this value is `ppm`.
 
 ### Enable_temperature (binary)

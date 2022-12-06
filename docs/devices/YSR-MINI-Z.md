@@ -16,7 +16,7 @@ pageClass: device-page
 |     |     |
 |-----|-----|
 | Model | YSR-MINI-Z  |
-| Vendor  | TuYa  |
+| Vendor  | [TuYa](/supported-devices/#v=TuYa)  |
 | Description | 2 in 1 dimming remote control and scene control |
 | Exposes | battery, action, operation_mode, linkquality |
 | Picture | ![TuYa YSR-MINI-Z](https://www.zigbee2mqtt.io/images/devices/YSR-MINI-Z.jpg) |
@@ -33,7 +33,7 @@ Press and hold the on (`1`) and off (`0`) buttons for approimately 10 seconds un
 ## Options
 *[How to use device type specific configuration](../guide/configuration/devices-groups.md#specific-device-options)*
 
-* `simulated_brightness`: Simulate a brightness value. If this device provides a brightness_move_up or brightness_move_down action it is possible to specify the update interval and delta. Example:
+* `simulated_brightness`: Simulate a brightness value. If this device provides a brightness_move_up or brightness_move_down action it is possible to specify the update interval and delta. The action_brightness_delta indicates the delta for each interval. Example:
 ```yaml
 simulated_brightness:
   delta: 20 # delta per interval, default = 20
